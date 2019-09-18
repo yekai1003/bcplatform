@@ -1,0 +1,6 @@
+[eth]
+connstr = "http://localhost:8545"
+[fisco]
+connstr = "http://localhost:8546"
+[eos]
+connstr = "http://localhost:8547"
