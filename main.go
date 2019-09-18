@@ -19,12 +19,14 @@ func ping(c *gin.Context) {
 	c.JSON(200, resp)
 }
 
+//监控各个区块链平台状态
 func blockstatus(c *gin.Context) {
 	resp := &RespMsg{
 		"0",
 		"OK",
 		nil,
 	}
+
 	c.JSON(200, resp)
 }
 
