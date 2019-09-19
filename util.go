@@ -7,6 +7,11 @@ import (
 	"net/http"
 )
 
+type NodesInfo struct {
+	NodeType string   `json:"nodetype"`
+	Peers    []string `json:"peers"`
+}
+
 func Http_req(url, jsonstr string) ([]byte, error) {
 	fmt.Println(url)
 	resp, err := http.Post(url, "application/json", bytes.NewBufferString(jsonstr))

@@ -41,6 +41,7 @@ func nodeinfo(c *gin.Context) {
 		resp.Msg = "param err"
 		return
 	}
+	var peers NodesInfo
 	switch name {
 	case "eth":
 		eth := NewEthReq()
@@ -48,8 +49,13 @@ func nodeinfo(c *gin.Context) {
 		if err != nil {
 			fmt.Println("以太坊平台并未启动")
 		} else {
+			peers.NodeType = "multi"
+			peers.Peers = append(peers.Peers, "127.0.0.1:30303")
+			peers.Peers = append(peers.Peers, "127.0.0.1:30304")
+			peers.Peers = append(peers.Peers, "127.0.0.1:30305")
+			//resp.Data = peers
 			resp.Data = string(bdata)
-
+			// fmt.Println(resp.Data)
 			return
 		}
 	case "eos":
@@ -63,6 +69,41 @@ func nodeinfo(c *gin.Context) {
 			resp.Data = string(bdata)
 		}
 	}
+}
+
+//监控各个区块链平台状态
+func peerinfo(c *gin.Context) {
+	resp := &RespMsg{
+		"0",
+		"OK",
+		nil,
+	}
+	defer c.JSON(200, resp)
+	name := c.Param("name")
+
+	var peers NodesInfo
+	if name == "eth" {
+		peers.NodeType = "multi"
+		peers.Peers = append(peers.Peers, "127.0.0.1:30303")
+		peers.Peers = append(peers.Peers, "127.0.0.1:30304")
+		peers.Peers = append(peers.Peers, "127.0.0.1:30305")
+		resp.Data = peers
+	} else if name == "fisco" {
+		peers.NodeType = "single"
+		peers.Peers = append(peers.Peers, "127.0.0.1:30303")
+		peers.Peers = append(peers.Peers, "127.0.0.1:30304")
+		peers.Peers = append(peers.Peers, "127.0.0.1:30305")
+		peers.Peers = append(peers.Peers, "127.0.0.1:30306")
+		resp.Data = peers
+	} else if name == "eos" {
+		peers.NodeType = "single"
+		peers.Peers = append(peers.Peers, "127.0.0.1:8888")
+		resp.Data = peers
+	} else {
+		resp.Code = "100"
+		resp.Msg = "Param err"
+	}
+
 }
 
 //获得节点信息
@@ -108,5 +149,6 @@ func main() {
 	r.GET("ping", ping)
 	r.GET("status", platformRun)
 	r.GET("nodeinfo/:name", nodeinfo)
+	r.GET("testdata/:name", peerinfo)
 	r.Run(":8080")
 }

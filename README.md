@@ -1,4 +1,11 @@
 # bcplatform
+
+### 服务启动 
+
+```
+localhost:bcplatform yekai$ go run *.go -c bc.toml
+```
+
 ### 开发接口
 
 #### 测试后端服务是否联通
@@ -34,3 +41,24 @@ localhost:test yekai$ curl http://localhost:8080/nodeinfo/eth
 yekai@ubtu-amd64:~$ curl http://localhost:8080/nodeinfo/fisco
 {"code":"0","msg":"OK","data":"{\"id\":1,\"jsonrpc\":\"2.0\",\"result\":[{\"Agency\":\"agency\",\"IPAndPort\":\"127.0.0.1:30303\",\"Node\":\"node3\",\"NodeID\":\"b76aa083bebe1be768abf9eb431e128830f97aeb605a13a5029e982e28b01e51cead6dea41f662564ec99c0420fb76a2a404bbbf3e4d2fd1048e33cf111c38ca\",\"Topic\":[]},{\"Agency\":\"agency\",\"IPAndPort\":\"127.0.0.1:30301\",\"Node\":\"node1\",\"NodeID\":\"84ef901cd10078dbdb59d53d3531fdda06e7bc227484dfc4bc1387e3e89eb3b67ea4065cc6e60122ce2c52ec47dda1c1a2b4c46fc1aa37e55e82a5e213549e71\",\"Topic\":[]},{\"Agency\":\"agency\",\"IPAndPort\":\"127.0.0.1:30302\",\"Node\":\"node2\",\"NodeID\":\"3e2cd70fe832a745a17dab5943bc121984409c59bd4f2773e421d038970449de34ea2236fc97f434ae355639d1cca5096c3296182d93631a174e77734a38786e\",\"Topic\":[]}]}\n"}
 ```
+
+#### 节点测试数据接口
+
+eth
+```
+localhost:bcplatform yekai$ curl http://localhost:8080/testdata/eth
+{"code":"0","msg":"OK","data":{"nodetype":"multi","peers":["127.0.0.1:30303","127.0.0.1:30304","127.0.0.1:30305"]}}
+```
+
+fisco 
+```
+localhost:bcplatform yekai$ curl http://localhost:8080/testdata/fisco
+{"code":"0","msg":"OK","data":{"nodetype":"single","peers":["127.0.0.1:30303","127.0.0.1:30304","127.0.0.1:30305","127.0.0.1:30306"]}}
+```
+
+eos 
+```
+localhost:bcplatform yekai$ curl http://localhost:8080/testdata/eos
+{"code":"0","msg":"OK","data":{"nodetype":"single","peers":["127.0.0.1:8888"]}}
+```
+

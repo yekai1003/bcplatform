@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 type EthReq struct {
 	connstr string
 	jsonstr string
@@ -16,6 +12,9 @@ func NewEthReq() *EthReq {
 }
 
 func (r *EthReq) Http_req() ([]byte, error) {
-	fmt.Println(r)
 	return Http_req(r.connstr, r.jsonstr)
 }
+
+// func ParseEthNodeInfo(data []byte) string {
+// 	fmt.Println(string(data))
+// }
