@@ -1,11 +1,8 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"os"
-
-	"github.com/BurntSushi/toml"
 )
 
 var (
@@ -37,35 +34,40 @@ func init() {
 }
 
 func GetConfig() (config *ServerConfig) {
-	var configFile = flag.String("c", "", "Config file")
 
-	var ver = flag.Bool("v", false, "version")
-	var help = flag.Bool("h", false, "Help")
+	// var configFile = flag.String("c", "", "Config file")
 
-	flag.Usage = usage
-	flag.Parse()
+	// var ver = flag.Bool("v", false, "version")
+	// var help = flag.Bool("h", false, "Help")
 
-	if *help {
-		usage()
-		return nil
+	// flag.Usage = usage
+	// flag.Parse()
+
+	// if *help {
+	// 	usage()
+	// 	return nil
+	// }
+
+	// if *ver {
+	// 	fmt.Println("Version: ", Version)
+	// 	fmt.Println("Commit: ", Commit)
+	// 	fmt.Println("BuildTime: ", BuildTime)
+	// 	return nil
+	// }
+	// // get server config
+	// if *configFile != "" {
+	// 	config = &ServerConfig{}
+	// 	if _, err := toml.DecodeFile(*configFile, &config); err != nil {
+	// 		panic(err)
+	// 	}
+	// } else {
+	// 	usage()
+	// 	return nil
+	// }
+	config = &ServerConfig{
+		&ChainConfig{"http://localhost:8546"},
+		&ChainConfig{"http://localhost:8545"},
+		&ChainConfig{"http://localhost:8547"},
 	}
-
-	if *ver {
-		fmt.Println("Version: ", Version)
-		fmt.Println("Commit: ", Commit)
-		fmt.Println("BuildTime: ", BuildTime)
-		return nil
-	}
-	// get server config
-	if *configFile != "" {
-		config = &ServerConfig{}
-		if _, err := toml.DecodeFile(*configFile, &config); err != nil {
-			panic(err)
-		}
-	} else {
-		usage()
-		return nil
-	}
-
 	return config
 }
