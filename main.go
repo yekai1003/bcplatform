@@ -182,7 +182,8 @@ func Cors() gin.HandlerFunc {
 func main() {
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.New()
-	r.StaticFS("/html/", http.Dir("./html"))
+	r.StaticFile("/", "html/index.html")
+	r.StaticFS("/html", http.Dir("html"))
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 	r.Use(Cors())

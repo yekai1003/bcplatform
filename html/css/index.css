@@ -1,0 +1,195 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.wrap{
+  display: flex;
+}
+.w_left{
+  position: absolute;
+  width: 200px;
+  height: 100%;
+  background: #212224;
+}
+.logo{
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+.logoImg{
+  width: 50%;
+  float: left;
+}
+.logoImg > img{
+  display: block;
+  width: 70px;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+.logoName{
+  width: 50%;
+  float: left;
+  height: 100px;
+  line-height: 100px;
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+.tabTitle li{
+  width: 100%;
+  height: 50px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+}
+.tabTitle li.active{
+  background-color: #A4A5AA;
+}
+.w_right{
+  flex: 1;
+  padding-left: 200px;
+}
+.tabCon li{
+  display: none;
+}
+.tabCon li.active{
+  display: block;
+}
+.tabCon_box{
+  position: relative;
+  width: 600px;
+  height: 400px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.tabCon_r{
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  position: absolute;
+  background: #A4A5AA;
+}
+.tabCon_r.run{
+  background: #65A33E;
+}
+.tabCon_single{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.tabCon_r1{
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.tabCon_r2{
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20%;
+}
+.tabCon_r3{
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20%;
+}
+.tabCon_r4{
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.tabCon_line{
+  position: absolute;
+  width: 2px;
+  height: 90px;
+  background: #3664BA;
+}
+.tabCon_line::before{
+  content: "";
+  width:0;
+  height:0;
+  border-left:5px solid transparent;
+  border-bottom:5px solid #3664BA;
+  border-right:5px solid transparent;
+  position: absolute;
+  top: -5px;
+  left: -4.5px;
+}
+.tabCon_line::after{
+  content: "";
+  width:0;
+  height:0;
+  border-left:5px solid transparent;
+  border-top:5px solid #3664BA;
+  border-right:5px solid transparent;
+  position: absolute;
+  bottom: -5px;
+  left: -4.5px;
+}
+.tabCon_line1{
+  top: 97px;
+  left: 226px;
+  transform: rotate(48deg);
+}
+.tabCon_line2{
+  top: 97px;
+  right: 226px;
+  transform: rotate(-48deg);
+}
+.tabCon_line3{
+  bottom: 92px;
+  left: 376px;
+  transform: rotate(48deg);
+}
+.tabCon_line4{
+  bottom: 92px;
+  left: 222px;
+  transform: rotate(-48deg);
+}
+.tabCon_status{
+  position: relative;
+  width: 600px;
+  height: 80px;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+}
+.status_left{
+  float: left;
+  margin-top: 25px;
+  margin-left: 80px;
+}
+.status_right{
+  float: right;
+  margin-right: 80px;
+}
+.ready_run{
+  color: #65A33E;
+  height: 25px;
+  line-height: 25px;
+}
+.ready_run > div{
+  position: relative;
+  display: inline-block;
+  top: -4px;
+  width: 50px;
+  height: 1px;
+  background: #65A33E;
+  margin-right: 5px;
+}
+.no_run{
+  color: #A4A5AA;
+}
+.no_run > div{
+  position: relative;
+  display: inline-block;
+  top: -4px;
+  width: 50px;
+  height: 1px;
+  background: #A4A5AA;
+  margin-right: 5px;
+}
